@@ -646,29 +646,29 @@ footer{background:#050505;border-top:1px solid rgba(201,168,76,.1);padding:2.25r
         <div class="c-item" style="margin-top:1rem;font-size:.75rem;font-style:italic;color:rgba(250,250,250,.2)">Based in Plano, Texas · Serving clients globally</div>
       </div>
     </div>
-    <form class="contact-form reveal" onsubmit="handleForm(event)">
+    <form class="contact-form reveal" onsubmit="handleForm(event)" action="https://formspree.io/f/xvzenryq" method="POST">
       <div class="form-row">
         <div class="fg">
           <label for="name">Name</label>
-          <input type="text" id="name" placeholder="Your full name" required>
+          <input type="text" id="name" name="name" placeholder="Your full name" required>
         </div>
         <div class="fg">
           <label for="company">Company</label>
-          <input type="text" id="company" placeholder="Company name">
+          <input type="text" id="company" name="company" placeholder="Company name">
         </div>
       </div>
       <div class="fg">
         <label for="email">Email</label>
-        <input type="email" id="email" placeholder="your@email.com" required>
+        <input type="email" id="email" name="email" placeholder="your@email.com" required>
       </div>
       <div class="fg">
         <label for="challenge">What's your biggest challenge right now?</label>
-        <textarea id="challenge" placeholder="Tell us what you're working on — the more specific, the better..."></textarea>
+        <textarea id="challenge" name="challenge" placeholder="Tell us what you're working on — the more specific, the better..."></textarea>
       </div>
       <div class="form-row">
         <div class="fg">
           <label for="engagement">Type of Engagement</label>
-          <select id="engagement">
+          <select id="engagement" name="engagement">
             <option value="" disabled selected>What are you looking for?</option>
             <option>Product Strategy Sprint</option>
             <option>Fractional CPO</option>
@@ -680,7 +680,7 @@ footer{background:#050505;border-top:1px solid rgba(201,168,76,.1);padding:2.25r
         </div>
         <div class="fg">
           <label for="timeline">Timeline</label>
-          <select id="timeline">
+          <select id="timeline" name="timeline">
             <option value="" disabled selected>When do you need to start?</option>
             <option>Immediately</option>
             <option>Within 1 month</option>
@@ -747,15 +747,38 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
 });
 
 // Form
-function handleForm(e){
+async function handleForm(e){
   e.preventDefault();
   const btn=document.getElementById('submitBtn');
-  btn.textContent='Sending...';btn.style.opacity='.7';
-  setTimeout(()=>{
-    document.getElementById('success-msg').style.display='block';
-    btn.textContent='Message Sent ✓';btn.style.background='#4a7c59';
-    e.target.querySelectorAll('input,textarea,select').forEach(f=>f.value='');
-  },1100);
+  btn.textContent='Sending...';
+  btn.style.opacity='.7';
+  btn.disabled=true;
+  const form=e.target;
+  const data=new FormData(form);
+  try{
+    const res=await fetch('https://formspree.io/f/xvzenryq',{
+      method:'POST',
+      body:data,
+      headers:{'Accept':'application/json'}
+    });
+    if(res.ok){
+      document.getElementById('success-msg').style.display='block';
+      btn.textContent='Message Sent ✓';
+      btn.style.background='#4a7c59';
+      btn.style.opacity='1';
+      form.querySelectorAll('input,textarea,select').forEach(f=>f.value='');
+    } else {
+      btn.textContent='Try Again';
+      btn.style.opacity='1';
+      btn.disabled=false;
+      alert('Something went wrong. Please email us at hello@solanteadvisory.com');
+    }
+  } catch(err){
+    btn.textContent='Try Again';
+    btn.style.opacity='1';
+    btn.disabled=false;
+    alert('Connection error. Please email us at hello@solanteadvisory.com');
+  }
 }
 </script>
 </body>
