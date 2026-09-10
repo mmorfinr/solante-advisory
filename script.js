@@ -7,11 +7,16 @@ const obs = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
 // Nav scroll
+const navEl = document.getElementById('nav');
+let navScrollTicking = false;
 window.addEventListener('scroll',()=>{
-  const n=document.getElementById('nav');
-  if(!n) return;
-  n.style.padding=window.scrollY>50?'1rem 5%':'1.4rem 5%';
-});
+  if(!navEl || navScrollTicking) return;
+  navScrollTicking = true;
+  requestAnimationFrame(()=>{
+    navEl.style.padding = window.scrollY>50?'1rem 5%':'1.4rem 5%';
+    navScrollTicking = false;
+  });
+},{passive:true});
 
 // Mobile nav
 function toggleNav(){
