@@ -23,6 +23,16 @@ function toggleNav(){
   }
 }
 
+// Mobile Services dropdown (desktop uses CSS :hover instead)
+document.querySelectorAll('.nav-item-dropdown > a').forEach(link => {
+  link.addEventListener('click', e => {
+    if (window.matchMedia('(max-width:1024px)').matches) {
+      e.preventDefault();
+      link.parentElement.classList.toggle('dd-open');
+    }
+  });
+});
+
 // Smooth scroll for same-page anchors only (e.g. #services on the homepage)
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',e=>{

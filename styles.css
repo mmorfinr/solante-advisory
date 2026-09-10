@@ -28,6 +28,10 @@ img{max-width:100%;height:auto}
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 5%;background:rgba(10,10,10,.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,.12);transition:padding .3s}
 .nav-logo img{height:38px;width:auto;display:block}
 .nav-logo a{display:block}
+.nav-wordmark{display:flex;align-items:baseline;gap:.6rem;text-decoration:none}
+.nav-wordmark .wm-main{font-family:var(--serif);font-size:1.35rem;font-weight:600;color:var(--white);letter-spacing:.01em;line-height:1}
+.nav-wordmark .wm-rule{width:1px;height:14px;background:rgba(201,168,76,.4);display:inline-block}
+.nav-wordmark .wm-sub{font-family:var(--sans);font-size:.6rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);line-height:1}
 .nav-links{display:flex;gap:2.5rem;align-items:center}
 .nav-links a{font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(250,250,250,.6);transition:color .2s}
 .nav-links a:hover,.nav-links a.active{color:var(--gold)}
@@ -35,6 +39,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .nav-cta:hover{background:var(--gold) !important;color:var(--black) !important}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
 .hamburger span{width:22px;height:1px;background:var(--white);display:block;transition:all .3s}
+
+/* SERVICES DROPDOWN */
+.nav-item-dropdown{position:relative}
+.nav-item-dropdown>a{display:flex;align-items:center;gap:.35rem;cursor:pointer}
+.nav-item-dropdown>a::after{content:'';width:6px;height:6px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .2s}
+.nav-item-dropdown:hover>a::after{transform:rotate(225deg) translateY(2px)}
+.dropdown-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);margin-top:1.1rem;background:#0d0d0d;border:1px solid rgba(201,168,76,.15);border-radius:2px;min-width:260px;padding:.5rem;opacity:0;visibility:hidden;transform:translateX(-50%) translateY(6px);transition:opacity .18s ease,transform .18s ease,visibility .18s;box-shadow:0 18px 40px rgba(0,0,0,.45)}
+.nav-item-dropdown:hover .dropdown-menu,.nav-item-dropdown:focus-within .dropdown-menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+.dropdown-menu a{display:block;padding:.7rem .9rem;font-size:.68rem;letter-spacing:.08em;color:rgba(250,250,250,.65);text-transform:uppercase;border-radius:1px;transition:background .15s,color .15s}
+.dropdown-menu a:hover{background:rgba(201,168,76,.08);color:var(--gold)}
 
 /* HERO */
 .hero{min-height:100vh;background:var(--black);display:grid;grid-template-columns:1.1fr 0.9fr;align-items:center;padding:0 5%;padding-top:80px;position:relative;overflow:hidden}
@@ -225,6 +239,11 @@ footer{background:#050505;border-top:1px solid rgba(201,168,76,.1);padding:2.25r
   .phase-grid,.related-grid{grid-template-columns:1fr 1fr}
   footer{flex-direction:column;text-align:center}
   #packages [style*="grid-template-columns:repeat(3"]{display:block !important}
+  .nav-item-dropdown{width:100%}
+  .nav-item-dropdown>a{justify-content:space-between}
+  .dropdown-menu{position:static;transform:none;opacity:1;visibility:visible;box-shadow:none;border:none;background:transparent;min-width:0;width:100%;padding:0 0 0 1rem;margin-top:.5rem;display:none}
+  .nav-item-dropdown.dd-open .dropdown-menu{display:block}
+  .dropdown-menu a{padding:.6rem 0;font-size:.68rem}
 }
 @media(max-width:640px){
   .hero h1{font-size:2.6rem}
