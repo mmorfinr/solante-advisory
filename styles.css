@@ -207,8 +207,20 @@ footer{background:#050505;border-top:1px solid rgba(201,168,76,.1);padding:2.25r
 /* SIMPLE CONTENT BLOCKS (service / methodology pages) */
 .content-block{max-width:760px}
 .content-block h2{font-size:clamp(1.7rem,3vw,2.3rem);margin-bottom:1.25rem}
+.content-block h3{font-family:var(--serif);font-size:1.2rem;font-weight:500;margin:2.25rem 0 1rem;color:var(--black)}
+.content-block h3:first-child{margin-top:0}
+.content-block-dark h3{color:var(--white)}
 .content-block p{font-size:.95rem;color:var(--gray);line-height:1.9;margin-bottom:1.5rem}
 .content-block-dark p{color:rgba(250,250,250,.55)}
+
+/* FAQ */
+.faq-block{max-width:760px}
+.faq-item{border-bottom:1px solid var(--gray-lt);padding:1.35rem 0}
+.faq-item summary{cursor:pointer;font-family:var(--serif);font-size:1.05rem;font-weight:500;color:var(--black);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1.5rem}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:'+';font-family:var(--sans);font-size:1.4rem;font-weight:300;color:var(--gold);flex-shrink:0;line-height:1}
+.faq-item[open] summary::after{content:'\2212'}
+.faq-item .faq-answer{margin-top:.9rem;font-size:.9rem;color:var(--gray);line-height:1.85;max-width:680px}
 .check-list{list-style:none;display:flex;flex-direction:column;gap:.9rem;margin:1.5rem 0 2rem}
 .check-list li{display:flex;align-items:flex-start;gap:1rem;font-size:.9rem;line-height:1.6}
 .check-list li::before{content:'';width:18px;height:1px;background:var(--gold);flex-shrink:0;margin-top:.7rem}
