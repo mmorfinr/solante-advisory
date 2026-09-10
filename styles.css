@@ -28,7 +28,9 @@ img{max-width:100%;height:auto}
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 5%;background:rgba(10,10,10,.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,.12);transition:padding .3s}
 .nav-logo img{height:38px;width:auto;display:block}
 .nav-logo a{display:block}
-.nav-wordmark{display:flex;align-items:baseline;gap:.6rem;text-decoration:none}
+.nav-wordmark{display:flex;align-items:center;gap:.7rem;text-decoration:none}
+.nav-wordmark .wm-mark{height:34px;width:auto;display:block}
+.nav-wordmark .wm-text{display:flex;align-items:baseline;gap:.6rem}
 .nav-wordmark .wm-main{font-family:var(--serif);font-size:1.35rem;font-weight:600;color:var(--white);letter-spacing:.01em;line-height:1}
 .nav-wordmark .wm-rule{width:1px;height:14px;background:rgba(201,168,76,.4);display:inline-block}
 .nav-wordmark .wm-sub{font-family:var(--sans);font-size:.6rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);line-height:1}
