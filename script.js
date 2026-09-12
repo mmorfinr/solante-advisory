@@ -6,6 +6,12 @@ const obs = new IntersectionObserver((entries) => {
 },{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
+// Safety net: guarantee all reveal content is visible even if the
+// observer above fails to fire for any reason on a given page/browser.
+setTimeout(()=>{
+  document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible'));
+}, 2000);
+
 // Nav scroll
 const navEl = document.getElementById('nav');
 let navScrollTicking = false;
