@@ -238,6 +238,10 @@ footer{background:#050505;border-top:1px solid rgba(201,168,76,.1);padding:2.25r
 .related-card span{font-size:.65rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.5rem}
 .related-card p{font-size:.85rem;font-weight:500;color:var(--black)}
 
+/* RELATED INSIGHT (understated editorial link) */
+.related-insight-link{font-family:var(--serif);font-size:1.05rem;font-weight:500;color:var(--black);display:inline-block;transition:color .2s}
+.related-insight-link:hover{color:var(--gold)}
+
 /* INSIGHTS */
 .insights-grid{display:flex;flex-direction:column;max-width:820px}
 .insight-card{display:block;padding:3rem 0;border-bottom:1px solid var(--gray-lt);transition:opacity .2s}
