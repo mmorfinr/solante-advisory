@@ -85,7 +85,7 @@
     <a href="/insights">Insights</a>
     <a href="/#packages">Packages</a>
     <a href="/#about">About</a>
-    <a href="/#contact" class="nav-cta">Strategy Call</a>
+    <a href="/#contact" class="nav-cta" data-ga="strategy_call">Strategy Call</a>
   </div>
   <div class="hamburger" onclick="toggleNav()" aria-label="Toggle menu">
     <span></span><span></span><span></span>
@@ -99,7 +99,7 @@
     <h1 class="reveal" style="font-size:clamp(2.3rem,4.1vw,3.75rem)">AI &amp; Product Strategy for Startups and Growing Businesses</h1>
     <p class="hero-sub reveal">Solante Advisory helps founders and business leaders identify high-value AI opportunities, build stronger product strategies, and turn ideas into scalable products and measurable business outcomes.</p>
     <div class="hero-actions reveal" style="margin-bottom:0">
-      <a href="#contact" class="btn-primary">Schedule a Strategy Call</a>
+      <a href="#contact" class="btn-primary" data-ga="strategy_call">Schedule a Strategy Call</a>
       <a href="#services" class="btn-ghost">Explore Our Services</a>
     </div>
   </div>
@@ -162,7 +162,7 @@
       <span class="svc-num">A Proven Framework</span>
       <h3 style="color:var(--white)">A Strategy Built for Your Business</h3>
       <p style="color:rgba(250,250,250,.38);font-size:.88rem;line-height:1.8;margin-bottom:2.25rem">Every engagement applies structured strategic thinking to your specific market, customers, technology, and growth objectives. You work directly with senior expertise from the first conversation.</p>
-      <a href="#contact" class="btn-primary" style="text-align:center">Start a Conversation</a>
+      <a href="#contact" class="btn-primary" style="text-align:center" data-ga="strategy_call">Start a Conversation</a>
     </div>
   </div>
 </section>
@@ -417,7 +417,7 @@
     </div>
 
   </div>
-  <p style="text-align:center;font-size:.8rem;color:var(--gray);margin-top:2.5rem;font-style:italic">All engagements are custom-scoped. <a href="#contact" style="color:var(--gold)">Schedule a call</a> to discuss what's right for your situation.</p>
+  <p style="text-align:center;font-size:.8rem;color:var(--gray);margin-top:2.5rem;font-style:italic">All engagements are custom-scoped. <a href="#contact" style="color:var(--gold)" data-ga="strategy_call">Schedule a call</a> to discuss what's right for your situation.</p>
 </section>
 
 <!-- CTA -->
@@ -426,7 +426,7 @@
     <span class="eyebrow" style="text-align:center;display:block">Ready?</span>
     <h2>Let's Build What's Next</h2>
     <p>Tell me what you're working through. One conversation is enough to determine whether Solante can help &mdash; no pitch deck, no pressure.</p>
-    <a href="#contact" class="btn-primary">Schedule a Strategy Call</a>
+    <a href="#contact" class="btn-primary" data-ga="strategy_call">Schedule a Strategy Call</a>
   </div>
 </section>
 
@@ -521,6 +521,13 @@ async function handleForm(e){
       headers:{'Accept':'application/json'}
     });
     if(res.ok){
+      if(typeof gtag==='function'){
+        gtag('event','generate_lead',{
+          form_name:'contact',
+          page_path:window.location.pathname,
+          page_title:document.title
+        });
+      }
       document.getElementById('success-msg').style.display='block';
       btn.textContent='Message Sent ✓';
       btn.style.background='#4a7c59';
