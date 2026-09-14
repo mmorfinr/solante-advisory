@@ -34,6 +34,53 @@ function toggleNav(){
   }
 }
 
+// GA4 event tracking (privacy-safe: only interaction metadata, no PII)
+document.addEventListener('click', (e) => {
+  const el = e.target.closest('a[data-ga], a[href*="linkedin.com/company/solante-advisory"]');
+  if (!el || typeof gtag !== 'function') return;
+
+  const pagePath = window.location.pathname;
+  const pageTitle = document.title;
+  const linkText = (el.textContent || '').trim();
+  const linkUrl = el.href;
+
+  // Outbound LinkedIn clicks -- matched by href, no markup needed
+  if (linkUrl.indexOf('linkedin.com/company/solante-advisory') !== -1) {
+    gtag('event', 'linkedin_click', {
+      link_url: linkUrl,
+      page_path: pagePath,
+      page_title: pageTitle
+    });
+  }
+
+  const gaKeys = (el.dataset.ga || '').split(/\s+/).filter(Boolean);
+
+  gaKeys.forEach((key) => {
+    if (key === 'strategy_call') {
+      gtag('event', 'strategy_call_click', {
+        link_text: linkText,
+        link_url: linkUrl,
+        page_path: pagePath,
+        page_title: pageTitle
+      });
+    } else if (key === 'article_to_service') {
+      gtag('event', 'article_to_service_click', {
+        article_slug: 'how-to-build-an-ai-strategy',
+        service: 'ai-strategy',
+        link_text: linkText,
+        page_path: pagePath
+      });
+    } else if (key === 'article_cta') {
+      gtag('event', 'article_cta_click', {
+        article_slug: 'how-to-build-an-ai-strategy',
+        cta_text: linkText,
+        cta_url: linkUrl,
+        page_path: pagePath
+      });
+    }
+  });
+});
+
 // Mobile Services dropdown (desktop uses CSS :hover instead)
 document.querySelectorAll('.nav-item-dropdown > a').forEach(link => {
   link.addEventListener('click', e => {
