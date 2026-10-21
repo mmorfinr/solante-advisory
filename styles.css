@@ -305,3 +305,14 @@ footer{background:#050505;border-top:1px solid rgba(201,168,76,.1);padding:2.25r
 @media(prefers-reduced-motion:reduce){
   .reveal{opacity:1;transform:none;transition:none}
 }
+/* Homepage dual-market additions */
+.audience-intro{max-width:740px;color:var(--gray);font-size:.95rem;line-height:1.85;margin-top:1.25rem}
+.audience-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px;background:var(--gray-lt)}
+.audience-card{background:var(--white);padding:3rem 2.5rem}
+.audience-card h3,.offer-panel h3,.intro-package h3{font-size:clamp(1.5rem,2.4vw,2rem);margin-bottom:1.1rem}
+.audience-card p,.offer-panel p,.intro-package p{font-size:.91rem;color:var(--gray);line-height:1.8;margin-bottom:1.5rem}
+.business-offer{background:#f3f1ec}.offer-panel{display:grid;grid-template-columns:1.5fr 1fr;gap:3rem;align-items:center;background:var(--white);padding:3.5rem;border-top:2px solid var(--gold)}
+.offer-panel strong,.intro-package strong{color:var(--black)}.offer-action{border-left:1px solid var(--gray-lt);padding-left:2.5rem}.offer-action .btn-primary{max-width:100%;text-align:center}
+.intro-package{display:flex;justify-content:space-between;align-items:center;gap:3rem;padding:3rem;margin-bottom:2rem;background:#f3f1ec;border-left:3px solid var(--gold)}.intro-package>div{max-width:650px}.intro-package .eyebrow{margin-bottom:1rem}.intro-package p:last-child{margin-bottom:0}
+@media(max-width:1024px){.audience-grid,.offer-panel{grid-template-columns:1fr}.offer-action{border-left:0;border-top:1px solid var(--gray-lt);padding:2rem 0 0}.intro-package{flex-direction:column;align-items:flex-start}}
+@media(max-width:640px){.audience-card,.offer-panel,.intro-package{padding:2rem 1.5rem}}
