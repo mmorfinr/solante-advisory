@@ -331,3 +331,13 @@ footer{background:#050505;border-top:1px solid rgba(201,168,76,.1);padding:2.25r
 .market-panel-dark p{color:rgba(250,250,250,.55)}
 @media(max-width:1024px){.two-market{grid-template-columns:1fr;gap:2.5rem}}
 @media(max-width:640px){.market-panel{padding:2rem 1.5rem}}
+
+/* Consistent business engagement and responsive presentation */
+.business-engagement{display:flex;justify-content:space-between;align-items:center;gap:3rem;background:var(--white);border:1px solid #e7e3da;border-left:3px solid var(--gold);padding:3rem;margin-bottom:2rem}
+.business-engagement>div{max-width:700px}.business-engagement h3{font-size:clamp(1.5rem,2.4vw,2rem);margin:1rem 0}.business-engagement p{color:var(--gray);font-size:.91rem;line-height:1.8;margin-bottom:1rem}.business-engagement ul{padding-left:1.3rem;color:var(--black);font-size:.9rem;line-height:1.9;margin-bottom:1rem}.business-engagement .engagement-note{font-size:.8rem}.business-engagement .btn-primary{flex-shrink:0;text-align:center}
+/* Long service lists: avoid narrow fixed label columns that split links and phrases */
+.page-body li,.service-body li,.article-body li{overflow-wrap:normal;word-break:normal}
+@media(max-width:1024px){.business-engagement{flex-direction:column;align-items:flex-start}.business-engagement .btn-primary{max-width:100%}}
+@media(max-width:640px){.business-engagement{padding:2rem 1.5rem}.business-engagement .btn-primary{width:100%}}
+.hamburger{border:0;background:transparent;cursor:pointer;color:inherit}
+.hamburger:focus-visible,.nav-links a:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
