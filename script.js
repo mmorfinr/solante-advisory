@@ -86,7 +86,8 @@ document.querySelectorAll('.nav-item-dropdown > a').forEach(link => {
   link.addEventListener('click', e => {
     if (window.matchMedia('(max-width:1024px)').matches) {
       e.preventDefault();
-      link.parentElement.classList.toggle('dd-open');
+      const isOpen = link.parentElement.classList.toggle('dd-open');
+      link.setAttribute('aria-expanded', String(isOpen));
     }
   });
 });
